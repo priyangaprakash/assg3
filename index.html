@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app='NarrowItDownApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Using $http Service</title>
+  </head>
+  <body>
+      <div ng-controller="NarrowItDownController as menu">
+        <h3>List of Menu Categories</h3>
+        <input type = "text" ng-model = "menu.desc">
+        <button ng-click="menu.getSearchedMenuItems(menu.desc);">Narrow It Down For Me!</button>              
+        <div>
+          <div ng-if = "menu.check.length === 0 || menu.desc === ''"><h1>{{menu.errorMessage}}</h1></div>
+          <table >
+            
+          <ul><tr> <td>         
+         <li ng-repeat="item in menu.check">
+            <b>Name</b> {{item.name}}<br>
+            <b>ShortName</b>{{item.short_name}}<br>
+            <b>Description:</b>{{item.description}}</br> 
+             <menu-directive></menu-directive>           
+          </li></td></tr>
+            
+        </ul> 
+            
+          </table>          
+        </div>
+            
+      </div>
+  </body>
